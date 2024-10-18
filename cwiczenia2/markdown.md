@@ -12,7 +12,7 @@ $$
 $$
 \begin{align*}
 x & = &a+b\cdot g \\
-& Georgus+ Floydus & x^{z^b}
+x^{z^b}
 \end{align*}
 $$
 
