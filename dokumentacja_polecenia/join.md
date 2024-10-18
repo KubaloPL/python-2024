@@ -1,5 +1,1 @@
-testttttt
-dssdsds
-testttt222
-dsaksadjlkasdja
-lalal
+# join - dokumentacja
