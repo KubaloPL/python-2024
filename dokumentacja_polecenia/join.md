@@ -24,3 +24,10 @@ $ join file1 file2
 a 1 X
 e 5 Y
 ```
+
+`join`’s default behavior (when no options are given):
+
+-   the join field is the first field in each line;
+-   fields in the input are separated by one or more blanks, with leading blanks on the line ignored;
+-   fields in the output are separated by a space;
+-   each output line consists of the join field, the remaining fields from file1, then the remaining fields from file2.
