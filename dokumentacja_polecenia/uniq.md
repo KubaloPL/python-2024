@@ -12,27 +12,37 @@ The input need not be sorted, but repeated input lines are detected only if they
 ```
 ‘-f n’
 ‘--skip-fields=n’
+```
 Skip n fields on each line before checking for uniqueness. Use a null string for comparison if a line has fewer than n fields. Fields are a sequence of blank characters followed by non-blank characters. Field numbers are one based, i.e., -f 1 will skip the first field (which may optionally have leading blanks).
 
-
+```
 ‘-s n’
 ‘--skip-chars=n’
+```
 Skip n characters before checking for uniqueness. Use a null string for comparison if a line has fewer than n characters. If you use both the field and character skipping options, fields are skipped over first.
 
+```
 ‘-c’
 ‘--count’
+```
 Print the number of times each line occurred along with the line.
 
+```
 ‘-i’
 ‘--ignore-case’
+```
 Ignore differences in case when comparing lines.
 
+```
 ‘-d’
 ‘--repeated’
+```
 Discard lines that are not repeated. When used by itself, this option causes uniq to print the first copy of each repeated line, and nothing else.
 
+```
 ‘-D’
 ‘--all-repeated[=delimit-method]’
+```
 Do not discard the second and subsequent repeated input lines, but discard lines that are not repeated. This option is useful mainly in conjunction with other options e.g., to ignore case or to compare only selected fields. The optional delimit-method, supported with the long form option, specifies how to delimit groups of repeated lines, and must be one of the following:
 
 ‘none’
