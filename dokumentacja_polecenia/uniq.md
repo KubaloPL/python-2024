@@ -9,6 +9,8 @@ By default, `uniq` prints its input lines, except that it discards all but the f
 
 The input need not be sorted, but repeated input lines are detected only if they are adjacent. If you want to discard non-adjacent duplicate lines, perhaps you want to use `sort -u.`
 
+***
+
 ```
 ‘-f n’
 ‘--skip-fields=n’
