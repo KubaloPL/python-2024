@@ -48,6 +48,7 @@ Discard lines that are not repeated. When used by itself, this option causes uni
 ```
 Do not discard the second and subsequent repeated input lines, but discard lines that are not repeated. This option is useful mainly in conjunction with other options e.g., to ignore case or to compare only selected fields. The optional delimit-method, supported with the long form option, specifies how to delimit groups of repeated lines, and must be one of the following:
 
+
 `‘none’`
 Do not delimit groups of repeated lines. This is equivalent to --all-repeated (-D).
 
@@ -57,34 +58,35 @@ Output a newline before each group of repeated lines. With --zero-terminated (-z
 `‘separate’`
 Separate groups of repeated lines with a single newline. This is the same as using ‘prepend’, except that no delimiter is inserted before the first group, and hence may be better suited for output direct to users. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter.
 
-Output is ambiguous when groups are delimited and the input stream contains empty lines. To avoid that, filter the input through ‘tr -s '\n'’ to remove blank lines.
-
-This is a GNU extension.
 ***
+```
 ‘--group[=delimit-method]’
+```
 Output all lines, and delimit each unique group. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter. The optional delimit-method specifies how to delimit groups, and must be one of the following:
 
-‘separate’
+`‘separate’`
 Separate unique groups with a single delimiter. This is the default delimiting method if none is specified, and better suited for output direct to users.
 
-‘prepend’
+`‘prepend’`
 Output a delimiter before each group of unique items.
 
-‘append’
+`‘append’`
 Output a delimiter after each group of unique items.
 
-‘both’
+`‘both’`
 Output a delimiter around each group of unique items.
 
-Output is ambiguous when groups are delimited and the input stream contains empty lines. To avoid that, filter the input through ‘tr -s '\n'’ to remove blank lines.
+***
 
-This is a GNU extension.
-
+```
 ‘-u’
 ‘--unique’
+```
 Discard the last line that would be output for a repeated input group. When used by itself, this option causes uniq to print unique lines, and nothing else.
 
+```
 ‘-w n’
 ‘--check-chars=n’
+```
 Compare at most n characters on each line (after skipping any specified fields and characters). By default the entire rest of the lines are compared.
 ```
