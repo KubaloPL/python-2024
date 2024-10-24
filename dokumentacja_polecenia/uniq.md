@@ -89,4 +89,3 @@ Discard the last line that would be output for a repeated input group. When used
 ‘--check-chars=n’
 ```
 Compare at most n characters on each line (after skipping any specified fields and characters). By default the entire rest of the lines are compared.
-```
