@@ -23,44 +23,44 @@ Skip n fields on each line before checking for uniqueness. Use a null string for
 ‘--skip-chars=n’
 ```
 Skip n characters before checking for uniqueness. Use a null string for comparison if a line has fewer than n characters. If you use both the field and character skipping options, fields are skipped over first.
-
+***
 ```
 ‘-c’
 ‘--count’
 ```
 Print the number of times each line occurred along with the line.
-
+***
 ```
 ‘-i’
 ‘--ignore-case’
 ```
 Ignore differences in case when comparing lines.
-
+***
 ```
 ‘-d’
 ‘--repeated’
 ```
 Discard lines that are not repeated. When used by itself, this option causes uniq to print the first copy of each repeated line, and nothing else.
-
+***
 ```
 ‘-D’
 ‘--all-repeated[=delimit-method]’
 ```
 Do not discard the second and subsequent repeated input lines, but discard lines that are not repeated. This option is useful mainly in conjunction with other options e.g., to ignore case or to compare only selected fields. The optional delimit-method, supported with the long form option, specifies how to delimit groups of repeated lines, and must be one of the following:
 
-‘none’
+`‘none’`
 Do not delimit groups of repeated lines. This is equivalent to --all-repeated (-D).
 
-‘prepend’
+`‘prepend’`
 Output a newline before each group of repeated lines. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter.
 
-‘separate’
+`‘separate’`
 Separate groups of repeated lines with a single newline. This is the same as using ‘prepend’, except that no delimiter is inserted before the first group, and hence may be better suited for output direct to users. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter.
 
 Output is ambiguous when groups are delimited and the input stream contains empty lines. To avoid that, filter the input through ‘tr -s '\n'’ to remove blank lines.
 
 This is a GNU extension.
-
+***
 ‘--group[=delimit-method]’
 Output all lines, and delimit each unique group. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter. The optional delimit-method specifies how to delimit groups, and must be one of the following:
 
