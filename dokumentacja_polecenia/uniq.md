@@ -15,8 +15,6 @@ The input need not be sorted, but repeated input lines are detected only if they
 ```
 Skip n fields on each line before checking for uniqueness. Use a null string for comparison if a line has fewer than n fields. Fields are a sequence of blank characters followed by non-blank characters. Field numbers are one based, i.e., -f 1 will skip the first field (which may optionally have leading blanks).
 
-\n
-
 ```
 ‘-s n’
 ‘--skip-chars=n’
