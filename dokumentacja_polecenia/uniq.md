@@ -53,16 +53,16 @@ Do not discard the second and subsequent repeated input lines, but discard lines
 Do not delimit groups of repeated lines. This is equivalent to --all-repeated (-D).
 
 `‘prepend’`
-Output a newline before each group of repeated lines. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter.
+Output a newline before each group of repeated lines. 
 
 `‘separate’`
-Separate groups of repeated lines with a single newline. This is the same as using ‘prepend’, except that no delimiter is inserted before the first group, and hence may be better suited for output direct to users. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter.
+Separate groups of repeated lines with a single newline. This is the same as using `‘prepend’`, except that no delimiter is inserted before the first group, and hence may be better suited for output direct to users.
 
 ***
 ```
 ‘--group[=delimit-method]’
 ```
-Output all lines, and delimit each unique group. With --zero-terminated (-z), use a zero byte (ASCII NUL) instead of a newline as the delimiter. The optional delimit-method specifies how to delimit groups, and must be one of the following:
+Output all lines, and delimit each unique group. The optional delimit-method specifies how to delimit groups, and must be one of the following:
 
 `‘separate’`
 Separate unique groups with a single delimiter. This is the default delimiting method if none is specified, and better suited for output direct to users.
@@ -82,7 +82,7 @@ Output a delimiter around each group of unique items.
 ‘-u’
 ‘--unique’
 ```
-Discard the last line that would be output for a repeated input group. When used by itself, this option causes uniq to print unique lines, and nothing else.
+Discard the last line that would be output for a repeated input group. When used by itself, this option causes `uniq` to print unique lines, and nothing else.
 
 ```
 ‘-w n’
