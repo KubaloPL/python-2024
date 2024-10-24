@@ -62,7 +62,7 @@ Separate groups of repeated lines with a single newline. This is the same as usi
 ```
 ‘--group[=delimit-method]’
 ```
-Output all lines, and delimit each unique group. The optional delimit-method specifies how to delimit groups, and must be one of the following:
+Output all lines, and delimit each unique group. The delimit-method specifies how to delimit groups, and must be one of the following:
 
 `‘separate’`
 Separate unique groups with a single delimiter. This is the default delimiting method if none is specified, and better suited for output direct to users.
