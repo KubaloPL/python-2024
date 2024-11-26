@@ -151,7 +151,7 @@ def main():
                 return
             #END OF SEATPOS VALIDATION
             name = input("Podaj nazwę osoby rezerwującej: ")
-            remove_reservation(seats, seatpos)
+            modify_reservation(seats, seatpos, name)
 
 
         elif option == "5":
