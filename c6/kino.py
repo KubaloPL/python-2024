@@ -1,92 +1,85 @@
-# # Opis programu rezerwacji miejsc w kinie
+# Program do rezerwacji miejsc w kinie
+from typing import Optional
 
-# ## Zadania do wykonania:
 
-# ### 1. Wyświetlanie aktualnego stanu rezerwacji miejsc
-# - **Typ danych:** lista (`seats`)
-# - **Opis:** Używamy listy `seats`, która przechowuje informacje o rezerwacjach miejsc. Jeśli miejsce jest wolne, w liście znajduje 
-#   się wartość `None`. Jeśli miejsce jest zarezerwowane, w liście przechowywane jest imię osoby, która je zarezerwowała.
-# - **Funkcja:** `print_seats(seats)` wyświetla aktualny stan wszystkich miejsc, informując, które z nich są wolne, 
-# a które są zarezerwowane oraz przez kogo.
 seats = [None]*10
 
-def print_seats(seats: list):
+def print_seats(seats: list) -> None:
     for i in range(len(seats)):
         if seats[i] == None:
             print(f"Miejsce {i+1} nie jest zarezerwowane przez nikogo.")
         else:
             print(f"Miejsce {i+1} jest zarezerowawane przez {seats[i]}")
 
-# ### 2. Dodawanie nowej rezerwacji
-# - **Typ danych:** lista (`seats`), ciąg znaków (imię), liczba całkowita (numer miejsca)
-# - **Opis:** Użytkownik podaje swoje imię oraz numer miejsca, które chce zarezerwować. 
-# Sprawdzamy, czy numer miejsca jest poprawny (czy mieści się w zakresie 1-10) 
-# i czy miejsce jest wolne (czy wartość w liście `seats` jest `None`). 
-# Jeśli warunki są spełnione, zapisujemy imię użytkownika w odpowiednim indeksie listy `seats`.
-# - **Funkcja:** `add_reservation(seats)` realizuje te kroki.
 
-def add_reservation(seats: list, name: str, seatpos: int):
+def add_reservation(seats: list, name: str, seatpos: int) -> None:
     seats[seatpos] = name
     print(f"Dodano {name} do rezerwacji na miejscu {seatpos+1}")
 
-# ### 3. Usuwanie istniejącej rezerwacji
-# - **Typ danych:** lista (`seats`), liczba całkowita (numer miejsca)
-# - **Opis:** Użytkownik podaje numer miejsca, które chce zwolnić. Sprawdzamy, czy numer miejsca jest poprawny
-#  (czy mieści się w zakresie 1-10) i czy miejsce jest zarezerwowane (czy wartość w liście `seats` nie jest `None`). 
-# Jeśli miejsce jest zarezerwowane, usuwamy rezerwację, ustawiając wartość `None` w odpowiednim indeksie listy `seats`.
-# - **Funkcja:** `remove_reservation(seats)` realizuje te kroki.
 
-def remove_reservation(seats: list, seatpos: int):
+def remove_reservation(seats: list, seatpos: int) -> None:
     seats[seatpos] = None
-    print(f"Usunięto rezerwację na miejscu {seatpos}")
+    print(f"Usunięto rezerwację na miejscu {seatpos+1}")
 
-# ### 4. Modyfikacja istniejącej rezerwacji
-# - **Typ danych:** lista (`seats`), liczba całkowita (numer miejsca), ciąg znaków (imię)
-# - **Opis:** Użytkownik podaje numer miejsca, które chce zmodyfikować. Sprawdzamy, czy numer miejsca jest poprawny oraz czy miejsce
-#  jest zarezerwowane. Następnie użytkownik podaje nowy numer miejsca, na które chce przenieść rezerwację. Sprawdzamy,
-#  czy nowy numer miejsca jest poprawny i czy jest wolny. Jeśli warunki są spełnione, przenosimy rezerwację na nowe miejsce,
-#  ustawiając odpowiednie wartości w liście `seats`.
-# - **Funkcja:** `modify_reservation(seats)` realizuje te kroki.
 
-def modify_reservation(seats: list, seatpos: int, name: str):
+def modify_reservation(seats: list, seatpos: int, name: str) -> None:
     seats[seatpos] = name
     print(f"Zmodyfikowano rezerwację na miejscu {seatpos+1}, zmieniono na {name}")
 
-# ### 5. Wyjście z programu
-# - **Opis:** Użytkownik może zakończyć działanie programu wybierając opcję "5". Funkcja `main()` odpowiada za główną pętlę programu,
-#  która umożliwia wybór opcji przez użytkownika i realizację poszczególnych funkcji programu.
 
-
-
-# ## Dodatkowe informacje
-# - Program wykorzystuje pętlę `while` do utrzymywania działania, dopóki użytkownik nie zdecyduje się zakończyć programu.
-# - Program działa na podstawie wprowadzonych danych użytkownika i wykonuje odpowiednie operacje na liście `seats`, która przechowuje 
-# stan rezerwacji miejsc w kinie.
-
-# ## Sprint 2 - Nowe możliwości w programie
-
-# ### 6. Sprawdzenie dostępności wielu miejsc
-# - **Typ danych:** lista (`seats`), lista liczb całkowitych (numery miejsc)
-# - **Opis:** Użytkownik może sprawdzić, czy wybrane miejsca są dostępne. Podaje listę numerów miejsc, a program sprawdza i informuje,
-#  które z nich są wolne, a które są zarezerwowane.
-# - **Funkcja:** `check_availability(seats)` realizuje te kroki.
-
-def check_availability(seats: list, seatnums: list[int]):
+def check_availability(seats: list, seatnums: list[int]) -> None:
     for i in seatnums:
-        if not (i >= 1 and i <= 10): continue
         if seats[i] == None:
-            print(f"Miejsce {i} Jest niezarezerwowane")
+            print(f"Miejsce {i+1} Jest niezarezerwowane")
         else:
-            print(f"Miejsce {i} Jest zarezerwowane przez {seats[i]}")
+            print(f"Miejsce {i+1} Jest zarezerwowane przez {seats[i]}")
 
 
+def add_multiple_reservations(seats: list, seatnums: list[int], name: str) -> None:
+    for i in seatnums:
+        seats[i] = name
+        print(f"Dodano {name} do rezerwacji na miejscu {i+1}")
+
+
+def cancel_all_reservations(seats: list, name: str) -> None:
+    did_anything = False
+    for i in range(len(seats)):
+        if seats[i] == name:
+            seats[i] = None
+            print(f"Usunięto rezerwację dla {name} na miejscu {i+1}")
+            did_anything = True
+    if did_anything == False:
+        print(f"BŁĄD: {name} Nie posiada żadnych rezerwacji")
+
+
+def validate_seatpos(seatpos: str) -> tuple[bool, Optional[int], Optional[str]]:
+    '''
+        function takes in seatpos directly from input as a string
+        Returns a tuple of:
+        - bool (isValid)  whether the seatpos is valid or not
+        - seatpos (int)  position of the 
+        - error_message (string)  if it errors
+    '''
+
+    if not seatpos.isnumeric():
+        return False, None, (f"BŁĄD: wpisano miejsce które nie jest liczbą ({seatpos})")
+    seatpos = int(seatpos)
+    seatpos -= 1 #account for counting tables from 0
+    if not (seatpos >= 0 and seatpos < len(seats)): 
+        return False, None, (f"BŁĄD: wpisano miejsce, które nie istnieje ({seatpos+1}), miejsca są dostępne od 1-{len(seats)}")
+    return True, seatpos, None
+
+    
 
 def main():
         print("Opcja 1: Wyświetlanie miejsc")
         print("Opcja 2: Dodawanie rezerwacji")
         print("Opcja 3: Usuwanie rezerwacji")
         print("Opcja 4: Modyfikacja rezerwacji")
-        print("Opcja 5: Wyjście z programu")
+        print("Opcja 5: Sprawdzanie dostępności wielu miejsc")
+        print("Opcja 6: Dodawanie rezerwacji na wielu miejscach")
+        print("Opcja 7: Usuwanie wszystkich rezerwacji danej osoby")
+        print("Opcja 8: Wyjście z programu")
         option = input("Wybierz opcje: ")
 
 
@@ -98,19 +91,15 @@ def main():
         elif option == "2": #adding reservation
             seatpos = input("Podaj miejsce na którym chcesz dodać rezerwację: ")
             #SEATPOS VALIDATION
-            if not seatpos.isnumeric():
-                print(f"BŁĄD: wpisano miejsce które nie jest liczbą")
+            is_valid, seatpos, error_message = validate_seatpos(seatpos)
+            if is_valid == False:
+                print(error_message)
                 return
-            seatpos = int(seatpos)
-            seatpos -= 1 #account for counting tables from 0
-            if not (seatpos >= 0 and seatpos < len(seats)): 
-                print(f"BŁĄD: wpisano miejsce, które nie istnieje, miejsca są dostępne od 1-{len(seats)}")
-                return 
+            
             if not (seats[seatpos] == None): 
                 print(f"BŁĄD: wpisano miejsce, które jest już zarezerwowane")
                 return
             #END OF SEATPOS VALIDATION
-            
             name = input("Podaj nazwę osoby rezerwującej: ")
             add_reservation(seats,name, seatpos)
 
@@ -119,14 +108,11 @@ def main():
         elif option == "3": #removing reservation
             seatpos = input("Podaj miejsce na którym chcesz usunąć rezerwację: ")
             #SEATPOS VALIDATION
-            if not seatpos.isnumeric():
-                print(f"BŁĄD: wpisano miejsce które nie jest liczbą")
+            is_valid, seatpos, error_message = validate_seatpos(seatpos)
+            if is_valid == False:
+                print(error_message)
                 return
-            seatpos = int(seatpos)
-            seatpos -= 1 #account for counting tables from 0
-            if not (seatpos >= 0 and seatpos < len(seats)): 
-                print(f"BŁĄD: wpisano miejsce, które nie istnieje, miejsca są dostępne od 1-{len(seats)}")
-                return 
+            
             if (seats[seatpos] == None): 
                 print(f"BŁĄD: wpisano miejsce, które nie jest zarezerwowane")
                 return
@@ -138,14 +124,11 @@ def main():
         elif option == "4": #modifying reservation
             seatpos = input("Podaj miejsce na którym chcesz zmodyfikować rezerwację: ")
             #SEATPOS VALIDATION
-            if not seatpos.isnumeric():
-                print(f"BŁĄD: wpisano miejsce które nie jest liczbą")
+            is_valid, seatpos, error_message = validate_seatpos(seatpos)
+            if is_valid == False:
+                print(error_message)
                 return
-            seatpos = int(seatpos)
-            seatpos -= 1 #account for counting tables from 0
-            if not (seatpos >= 0 and seatpos < len(seats)): 
-                print(f"BŁĄD: wpisano miejsce, które nie istnieje, miejsca są dostępne od 1-{len(seats)}")
-                return 
+            
             if (seats[seatpos] == None): 
                 print(f"BŁĄD: wpisano miejsce, które nie jest zarezerwowane")
                 return
@@ -154,24 +137,62 @@ def main():
             modify_reservation(seats, seatpos, name)
 
 
-        elif option == "5":
+
+        elif option == "5": #checking availability
+            seatnums = input("Podaj numery miejsc oddzielone spacją aby sprawdzić ich dostępność: ")
+            seatnums = seatnums.split(" ")
+            #SEATPOS VALIDATION
+            seatnums2 = []
+            for seatpos in seatnums:
+                is_valid, seatpos, error_message = validate_seatpos(seatpos)
+                if is_valid == False:
+                    print(error_message)
+                    return
+                seatnums2.append(seatpos)
+            #END OF SEATPOS VALIDATION
+            check_availability(seats, seatnums2)
+
+
+
+        elif option == "6": #adding multiple reservations
+            seatnums = input("Podaj numery miejsc oddzielone spacją na których chcesz dodać rezerwację: ")
+            seatnums = seatnums.split(" ")
+            #SEATPOS VALIDATION
+            seatnums2 = []
+            for seatpos in seatnums:
+                is_valid, seatpos, error_message = validate_seatpos(seatpos)
+                if is_valid == False:
+                    print(error_message)
+                    return
+                
+                if not (seats[seatpos] == None): 
+                    print(f"BŁĄD: wpisano miejsce, które jest już zarezerwowane ({seatpos+1})")
+                    return
+                seatnums2.append(seatpos)
+            #END OF SEATPOS VALIDATION
+            name = input("Podaj nazwę osoby rezerwującej: ")
+            add_multiple_reservations(seats, seatnums2, name)
+
+
+
+        elif option == "7": #cancelling all reservations
+            name = input("Podaj nazwę osoby której chcesz usunąć wszystkie rezerwację: ")
+            cancel_all_reservations(seats, name)
+
+
+
+        elif option == "8": #exiting the program
             return "end"
+        
+
+
+        else: #invalid option
+            print("BŁĄD: Nie znaleziono takiej opcji")
+        
+
         
 while True:
     if main() == "end":
         break
     else:
         input("\nNaciśnij enter aby kontynuować...\n")
-# ### 7. Rezerwacja wielu miejsc naraz
-# - **Typ danych:** lista (`seats`), ciąg znaków (imię), lista liczb całkowitych (numery miejsc)
-# - **Opis:** Użytkownik może dokonać rezerwacji wielu miejsc jednocześnie. Podaje swoje imię oraz listę numerów miejsc do rezerwacji. Program sprawdza, czy wszystkie podane miejsca są wolne, a jeśli tak, dokonuje rezerwacji.
-# - **Funkcja:** `add_multiple_reservations(seats)` realizuje te kroki.
-
-
-
-
-# ### 8. Anulowanie wszystkich rezerwacji
-# - **Typ danych:** lista (`seats`), ciąg znaków (imię)
-# - **Opis:** Użytkownik może anulować wszystkie swoje rezerwacje. Podaje swoje imię, a program usuwa wszystkie miejsca zarezerwowane na to imię.
-# - **Funkcja:** `cancel_all_reservations(seats)` realizuje te kroki.
-
